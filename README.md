@@ -29,3 +29,5 @@
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia Apache 2.0.
+
+#### Desarrollado por Jesús Gómez - 2024. 
