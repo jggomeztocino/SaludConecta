@@ -23,16 +23,12 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 
 #### Responsabilidades
 - Gestión de la información personal y profesional de todo el personal del hospital, incluyendo médicos, personal de limpieza, mantenimiento, y administrativo.
-- Asignación de roles y permisos a los miembros del personal.
-- Gestión de la disponibilidad y asignación de turnos de trabajo.
-- Registro y seguimiento de la asistencia del personal.
-- Coordinación y comunicación entre los miembros del personal de diferentes áreas.
+- Gestión de la disponibilidad y asignación de turnos de trabajo para asegurar la cobertura adecuada en todas las áreas.
+- Coordinación y comunicación entre los miembros del personal de diferentes áreas para garantizar una operación eficiente y sin interrupciones.
 
 #### Entidades
-- `Empleado`: Representa a un miembro del personal del hospital, con su información personal y profesional.
-- `Rol`: Define los roles y permisos que puede tener un miembro del personal, incluyendo sus responsabilidades específicas.
-- `Turno`: Define los horarios y turnos de trabajo de un miembro del personal.
-- `Asistencia`: Registra la asistencia de un miembro del personal.
+- **`Empleado`**: Representa a un miembro del personal del hospital, incluyendo su información personal, profesional y el rol que desempeña dentro del hospital.
+- **`Turno`**: Define los horarios y turnos de trabajo asignados a cada miembro del personal, gestionando la disponibilidad y asegurando que todos los turnos sean cubiertos de manera efectiva.
 
 ### 3. Citas
 
@@ -55,10 +51,7 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 
 #### Entidades
 - `Recurso`: Representa un recurso o equipo médico, con información sobre el tipo, cantidad, estado y ubicación.
-- `Inventario`: Almacena la información sobre la cantidad y estado de los recursos disponibles.
 - `Asignación`: Representa la asignación de un recurso a una cita o consulta médica específica.
-- `Mantenimiento`: Registra las actividades de mantenimiento y reparación de un recurso.
-- `Disponibilidad`: Registra la disponibilidad y uso actual de un recurso.
 
 ### 5. Monitorización y Análisis
 

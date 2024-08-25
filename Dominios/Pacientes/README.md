@@ -27,6 +27,7 @@ La entidad `Paciente` representa a un paciente en el sistema, con su informació
 Para la entidad `Paciente` se han identificado los siguientes atributos comounes a la mayoría de los sistemas de gestión de pacientes:
 - `ID`: Identificador único del paciente
 - `Nombre`: Nombre completo del paciente
+- `Estado`: Estado actual del paciente
 - `FechaNacimiento`: Fecha de nacimiento del paciente
 - `Sexo`: Género del paciente
 - `Dirección`: Dirección de residencia del paciente
