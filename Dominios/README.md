@@ -17,7 +17,7 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 
 #### Entidades
 - `Paciente`: Representa a un paciente en el sistema, con su información personal y médica.
-- `HistorialMédico`: Almacena el historial médico de un paciente, incluyendo diagnósticos, tratamientos y visitas médicas.
+- `HistorialMédico`: Véase como un expediente. Existirá un historial médico principal por cada paciente, que contendrá la información más relevante y actualizada sobre su estado de salud. Por cada caso específico o temporal (como una enfermedad o lesión), se creará un nuevo historial médico que se asociará al paciente en cuestión.
 
 ### 2. Personal
 
