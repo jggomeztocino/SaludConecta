@@ -1,0 +1,31 @@
+# Diagrama de estados del ciclo de vida del historial médico
+
+![Diagrama de estados del ciclo de vida del historial médico](./HistorialMedico.png)
+
+## Código fuente
+El anterior diagrama de estados fue generado con la herramienta [PlantUML](https://plantuml.com/), utilizando el siguiente código fuente:
+
+```
+@startuml  HistorialMedico
+skinparam maxMessageSize 100
+skinparam wrapWidth 400
+
+[*] --> Creado : Se crea un nuevo historial médico para el paciente
+
+Creado : El historial médico ha sido creado y se encuentra en estado inicial
+Creado --> Activo : Se hace una evaluación inicial del paciente
+Creado --> Crítico : Se hace una evaluación inicial del paciente y se detecta una enfermedad crítica en el paciente
+
+Activo : El historial médico se encuentra activo y se actualiza con cada consulta
+Activo --> Crítico : Se detecta una enfermedad crítica en el paciente
+Activo --> Cerrado : Se determina que el paciente no necesita más atención médica en relación al motivo de la apertura del historial
+
+Crítico : El historial médico se encuentra en estado crítico y se actualiza con cada consulta
+Crítico --> Activo : Se determina que la enfermedad o los síntomas críticos han sido controlados y el paciente ha mejorado, pero requiere de seguimiento
+Crítico --> Cerrado : Se determina que el paciente no necesita más atención médica en relación al motivo de la apertura del historial
+
+Cerrado : El historial médico se encuentra cerrado y no se actualiza con nuevas consultas
+Cerrado --> [*] : El historial médico ha sido cerrado
+
+@enduml
+```
