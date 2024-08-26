@@ -39,7 +39,7 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 
 #### Entidades
 - `Cita`: Representa una cita médica entre un paciente y un médico, con información sobre la fecha, hora, duración, y estado.
-- `Consulta`: Representa una consulta médica realizada durante una cita, con información sobre el diagnóstico, tratamiento y observaciones.
+- `Consulta`: Representa una consulta médica asociada o no a una cita, con información sobre los posibles historiales médicos que puedan abrirse.
 
 ### 4. Recursos
 
@@ -61,9 +61,9 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 - Detección de anomalías y generación de alertas.
 
 #### Entidades
-- `Métrica`: Representa una métrica específica para el monitoreo de rendimiento o uso del sistema.
-- `Informe`: Genera un informe basado en el análisis de las métricas recolectadas.
-- `Alerta`: Notificación generada en caso de detectar un comportamiento anómalo o un problema en el sistema.
+- `Métrica`: Representa una métrica específica para el monitoreo de rendimiento o uso del sistema. (?)
+- `Informe`: Genera un informe basado en el análisis de las métricas recolectadas. (?)
+- `Alerta`: Notificación generada en caso de detectar un comportamiento anómalo o un problema en el sistema. (?)
 
 ### 6. Seguridad (Autenticación y Autorización)
 
@@ -75,4 +75,3 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 #### Entidades
 - `Usuario`: Representa a un usuario del sistema, con su información de autenticación y roles asociados.
 - `Token`: Mecanismo de seguridad para autenticar las solicitudes del usuario.
-- `Permiso`: Define los niveles de acceso permitidos a un usuario o rol específico.
