@@ -1,13 +1,13 @@
 # Dominio _Personal_
 
-Este dominio se encarga de gestionar la información personal y profesional de todo el personal del hospital, incluyendo médicos, personal de limpieza, mantenimiento, y administrativo. Además, se ocupa de la gestión y asignación de turnos de trabajo, así como de la coordinación y comunicación entre los distintos miembros del personal para garantizar una operación eficiente en el hospital.
+Este dominio se encarga de gestionar la información personal y profesional de todo el personal del hospital, incluyendo médicos, personal de limpieza, mantenimiento, y administrativo. Además, se ocupa de la gestión y asignación de turnos de trabajo, así como de la coordinación entre los distintos miembros del personal para garantizar una operación eficiente en el hospital.
 
 ## Responsabilidades
 
 Entre las responsabilidades de este dominio se encuentran:
 - Gestión de la información personal y profesional de todo el personal del hospital.
 - Asignación y gestión de turnos de trabajo para asegurar la adecuada cobertura en todas las áreas del hospital.
-- Coordinación y comunicación entre los miembros del personal de diferentes áreas para facilitar la colaboración y eficiencia en el trabajo.
+- Coordinación entre los miembros del personal de diferentes áreas para facilitar la colaboración y eficiencia en el trabajo.
 
 Esto se conseguirá mediante el reparto de responsabilidades entre entidades que representan a los empleados y los turnos de trabajo.
 
@@ -41,7 +41,7 @@ Para la entidad `Empleado` se han identificado los siguientes atributos comunes 
 
 El ciclo de vida de un empleado en el sistema consta de las siguientes fases (no necesariamente en este orden):
 
-1. **Alta**: El empleado está activo en el sistema y tiene un rol asignado.
+1. **Disponible**: El empleado está activo en el sistema, tiene un rol asignado y está disponible para asignarle un turno.
 2. **Trabajando**: El empleado está actualmente trabajando en el hospital y cumpliendo con sus responsabilidades.
 3. **Baja**: El empleado está de baja temporal por motivos personales o profesionales.
 4. **Suspendido**: El empleado ha sido suspendido temporalmente por motivos disciplinarios o legales.

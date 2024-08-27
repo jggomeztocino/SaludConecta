@@ -1,0 +1,30 @@
+# Diagrama de estados del ciclo de vida de la asignación
+
+![Diagrama de estados del ciclo de vida de la asignación](./Asignacion.png)
+
+## Código fuente
+El anterior diagrama de estados fue generado con la herramienta [PlantUML](https://plantuml.com/), utilizando el siguiente código fuente:
+
+```
+@startuml Asignacion
+
+skinparam maxMessageSize 100
+skinparam wrapWidth 400
+
+[*] --> Asignado : Se asigna el recurso a una consulta
+
+Asignado : El recurso ha sido asignado a la consulta
+Asignado --> Cancelado : Se cancela la consulta asociada
+Asignado --> EnUso : Se inicia la consulta asociada
+
+EnUso : El recurso está siendo utilizado en la consulta
+EnUso --> Finalizado : Se finaliza la consulta asociada
+
+Cancelado : La asignación ha sido cancelada y el recurso vuelve a estar disponible
+Cancelado --> [*] : Se elimina la asignación del sistema y el recurso vuelve a estar disponible
+
+Finalizado : El recurso ha sido utilizado y debe revisarse o reponerse para futuras asignaciones
+Finalizado --> [*] : Se revisa el recurso y vuelve a estar disponible
+
+@enduml
+```

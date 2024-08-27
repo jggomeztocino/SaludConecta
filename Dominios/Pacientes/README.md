@@ -33,7 +33,7 @@ Para la entidad `Paciente` se han identificado los siguientes atributos comounes
 - `Dirección`: Dirección de residencia del paciente
 - `Teléfono`: Número de teléfono de contacto del paciente
 - `Email`: Dirección de correo electrónico del paciente
-- `HistorialMédico`: Referencia al historial médico del paciente
+- `HistorialMédico`: Referencia a los distintos historiales médicos del paciente
 
 #### Ciclo de Vida
 
@@ -41,8 +41,8 @@ El ciclo de vida de un paciente en el sistema consta de las siguientes fases (no
 
 1. **Alta**: Estado inicial de cualquier nuevo paciente. El paciente no tiene ninguna enfermedad o síntoma que requiera seguimiento o intervención.
 2. **Observación**: El paciente tiene una enfermedad o síntoma que requiere seguimiento y pruebas adicionales.
-3. **Ingreso**: El paciente tiene una enfermedad o síntoma que requiere de ingreso e/o intervención inmediata.
-4. **Baja**: El paciente es eliminado del sistema por voluntad propia o se notifica su fallecimiento. En ambos casos sus datos son archivados o anonimizados.
+3. **Ingresado**: El paciente tiene una enfermedad o síntoma que requiere de ingreso e/o intervención inmediata.
+4. **Inactivo**: El paciente es eliminado del sistema por voluntad propia o se notifica su fallecimiento. En ambos casos sus datos son archivados o anonimizados.
 
 En el siguiente diagrama de estados se muestra el ciclo de vida de un paciente en el sistema:
 

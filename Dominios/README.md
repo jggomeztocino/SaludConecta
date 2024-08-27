@@ -24,7 +24,7 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 #### Responsabilidades
 - Gestión de la información personal y profesional de todo el personal del hospital, incluyendo médicos, personal de limpieza, mantenimiento, y administrativo.
 - Gestión de la disponibilidad y asignación de turnos de trabajo para asegurar la cobertura adecuada en todas las áreas.
-- Coordinación y comunicación entre los miembros del personal de diferentes áreas para garantizar una operación eficiente y sin interrupciones.
+- Coordinación de los miembros del personal de diferentes áreas para garantizar una operación eficiente y sin interrupciones.
 
 #### Entidades
 - **`Empleado`**: Representa a un miembro del personal del hospital, incluyendo su información personal, profesional y el rol que desempeña dentro del hospital.
@@ -33,13 +33,13 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 ### 3. Citas
 
 #### Responsabilidades
-- Gestión integral de las citas médicas, incluyendo su creación, modificación y cancelación.
-- Coordinación entre pacientes, personal médico y recursos para asegurar la disponibilidad necesaria.
-- Registro y seguimiento de las consultas médicas asociadas a cada cita.
+- Coordinación de citas y consultas médicas entre pacientes y médicos.
+- Asignación de recursos y equipos médicos necesarios para cada consulta.
+- Registro y seguimiento de las citas y consultas realizadas, incluyendo información sobre el estado y resultados.
 
 #### Entidades
-- `Cita`: Representa una cita médica entre un paciente y un médico, con información sobre la fecha, hora, duración, y estado.
-- `Consulta`: Representa una consulta médica asociada o no a una cita, con información sobre los posibles historiales médicos que puedan abrirse.
+- `Cita`: Representa una cita médica entre un paciente y una consulta, con información sobre la fecha, hora, consulta asociada y estado de la cita.
+- `Consulta`: Define una reunión entre un médico y un paciente, con información sobre el médico, paciente, motivo de la consulta y resultados.
 
 ### 4. Recursos
 
@@ -53,7 +53,7 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 - `Recurso`: Representa un recurso o equipo médico, con información sobre el tipo, cantidad, estado y ubicación.
 - `Asignación`: Representa la asignación de un recurso a una cita o consulta médica específica.
 
-### 5. Monitorización y Análisis
+### 5. Monitorización y Análisis (?)
 
 #### Responsabilidades
 - Monitorización continua del rendimiento y disponibilidad de los servicios.
@@ -64,14 +64,3 @@ SaludConecta está compuesto por varios dominios, cada uno gestionando un aspect
 - `Métrica`: Representa una métrica específica para el monitoreo de rendimiento o uso del sistema. (?)
 - `Informe`: Genera un informe basado en el análisis de las métricas recolectadas. (?)
 - `Alerta`: Notificación generada en caso de detectar un comportamiento anómalo o un problema en el sistema. (?)
-
-### 6. Seguridad (Autenticación y Autorización)
-
-#### Responsabilidades
-- Gestión de la autenticación y autorización de usuarios en el sistema.
-- Provisión de mecanismos de seguridad para garantizar el acceso seguro a los recursos y servicios.
-- Administración de roles y permisos para los usuarios.
-
-#### Entidades
-- `Usuario`: Representa a un usuario del sistema, con su información de autenticación y roles asociados.
-- `Token`: Mecanismo de seguridad para autenticar las solicitudes del usuario.

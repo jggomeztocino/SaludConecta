@@ -14,21 +14,21 @@ skinparam wrapWidth 400
 
 Alta : El paciente no tiene ninguna enfermedad o síntoma que requiera seguimiento o intervención.
 Alta --> Observacion : El paciente tiene una enfermedad o sintoma que requiere ser evaluado y seguido.
-Alta --> Ingreso : El paciente tiene una enfermedad o sintoma que requiere de ingreso e/o intervención inmediata.
-Alta --> Baja : El paciente solicita la baja voluntaria del sistema o se notifica su fallecimiento.
+Alta --> Ingresado : El paciente tiene una enfermedad o sintoma que requiere de ingreso e/o intervención inmediata.
+Alta --> Inactivo : El paciente solicita la baja voluntaria del sistema o se notifica su fallecimiento.
 
 Observacion : El paciente tiene una enfermedad o síntoma que requiere seguimiento y pruebas adicionales.
 Observacion --> Alta : El seguimiento del paciente ya no es necesario, sus condiciones han mejorado o se ha determinado que no requiere intervención.
-Observacion --> Ingreso : Los síntomas empeoran o los resultados de las pruebas indican que el paciente requiere ingreso e/o intervención inmediata.
-Observacion --> Baja : El paciente solicita la baja voluntaria del sistema o se notifica su fallecimiento.
+Observacion --> Ingresado : Los síntomas empeoran o los resultados de las pruebas indican que el paciente requiere ingreso e/o intervención inmediata.
+Observacion --> Inactivo : El paciente solicita la baja voluntaria del sistema o se notifica su fallecimiento.
 
-Ingreso : El paciente tiene una enfermedad o síntoma que requiere de ingreso e/o intervención inmediata.
-Ingreso --> Alta : La enfermedad o síntomas del paciente han sido sanadas y no requiere más intervención.
-Ingreso --> Observacion : La enfermedad o síntomas del paciente han mejorado pero requieren seguimiento y pruebas adicionales.
-Ingreso --> Baja : El paciente fallece.
+Ingresado : El paciente tiene una enfermedad o síntoma que requiere de ingreso e/o intervención inmediata.
+Ingresado --> Alta : La enfermedad o síntomas del paciente han sido sanadas y no requiere más intervención.
+Ingresado --> Observacion : La enfermedad o síntomas del paciente han mejorado pero requieren seguimiento y pruebas adicionales.
+Ingresado --> Inactivo : El paciente fallece.
 
-Baja : El paciente es eliminado del sistema por voluntad propia o se notifica su fallecimiento. En ambos casos sus datos son archivados o anonimizados.
-Baja --> [*] : El paciente ha sido eliminado del sistema.
+Inactivo : El paciente es eliminado del sistema por voluntad propia o se notifica su fallecimiento. En ambos casos sus datos son archivados o anonimizados.
+Inactivo --> [*] : El paciente ha sido eliminado del sistema.
 
 @enduml
 ```
