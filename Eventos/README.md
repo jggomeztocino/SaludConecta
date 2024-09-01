@@ -6,7 +6,7 @@ Apache Kafka es una plataforma de streaming de eventos de código abierto que se
 
 Kafka permite la **publicación** y **suscripción** a flujos de registros (también llamados eventos o mensajes), el almacenamiento de estos registros de manera persistente, y el procesamiento de estos flujos de datos en tiempo real. 
 
-## Conceptos Clave
+## Conceptos clave
 
 A continuación, se detallan algunos conceptos clave a la hora de trabajar con Apache Kafka:
 
@@ -30,15 +30,15 @@ A continuación, se detallan algunos conceptos clave a la hora de trabajar con A
 - Las **réplicas** son copias de las particiones de un tópico. Cada partición puede tener varias réplicas distribuidas en diferentes brokers.
 - Las réplicas proporcionan tolerancia a fallos, ya que si un broker falla, las réplicas en otros brokers pueden asumir el rol de líder y continuar sirviendo los datos.
 
-### 6. **Líderes y Réplicas Seguidoras**
+### 6. **Líderes y brokers réplicas**
 - Para cada partición, uno de los brokers es el **líder** que maneja todas las operaciones de lectura y escritura para esa partición.
-- Las **réplicas seguidoras** simplemente replican los datos desde el líder y no manejan operaciones de clientes a menos que se conviertan en líderes en caso de fallo del líder actual.
+- Los **brokers réplicas** simplemente replican los datos desde el líder y no manejan operaciones de clientes a menos que se conviertan en líderes en caso de fallo del líder actual.
 
-### 7. **Productores y Consumidores**
+### 7. **Productores y consumidores**
 - Un **productor** es una aplicación que publica registros en un tópico de Kafka.
 - Un **consumidor** es una aplicación que se suscribe a un tópico para leer y procesar los registros.
 
-### 8. **Grupos de Consumidores**
+### 8. **Grupos de consumidores**
 - Consiste en múltiples consumidores que colaboran para leer mensajes de un tópico.
 - Kafka distribuye automáticamente las particiones de un tópico entre los consumidores en el grupo.
 - Un mismo consumidor puede leer múltiples particiones, pero una partición solo puede ser leída por un consumidor en un grupo.
@@ -70,13 +70,13 @@ En una arquitectura de microservicios, los servicios individuales son responsabl
 
 MQTT (Message Queuing Telemetry Transport) es un protocolo de mensajería ligero diseñado para dispositivos con recursos limitados y redes con ancho de banda reducido, como en el Internet de las Cosas (IoT). Es adecuado para situaciones donde los mensajes son pequeños y la comunicación debe ser eficiente.
 
-### Diferencias Principales
+### Diferencias principales
 
-1. **Propósito y Uso**:
+1. **Propósito y uso**:
    - **Kafka**: Está diseñado para manejar flujos de datos masivos en tiempo real y es ideal para aplicaciones que requieren alta escalabilidad, fiabilidad y procesamiento en tiempo real.
    - **MQTT**: Se principal aplicación son los dispositivos IoT, ya que está enfocado en la eficiencia y simplicidad. Es adecuado para casos de uso donde los dispositivos tienen recursos limitados y los mensajes son pequeños y esporádicos.
 
-2. **Persistencia de Datos**:
+2. **Persistencia de datos**:
    - **Kafka**: Almacena los mensajes de forma persistente, lo que permite a los consumidores leer y procesar datos en diferentes momentos y reprocesar eventos pasados.
    - **MQTT**: De no implementarse, por defecto, no almacena mensajes de manera persistente.
 
@@ -84,7 +84,7 @@ MQTT (Message Queuing Telemetry Transport) es un protocolo de mensajería ligero
    - **Kafka**: Puede escalar horizontalmente para manejar grandes volúmenes de datos y miles de clientes simultáneamente gracias a su arquitectura basada en particiones.
    - **MQTT**: Está diseñado para ser ligero y no maneja la misma escala de datos que Kafka. Es más adecuado para redes con recursos limitados y no está diseñado para procesamiento masivo de datos.
 
-4. **Modelos de Comunicación**:
+4. **Modelos de comunicación**:
    - **Kafka**: Soporta modelos de comunicación complejos como publicación/suscripción, stream processing, y almacenamiento de logs, con capacidades de replicación y tolerancia a fallos.
    - **MQTT**: Se centra en un simple modelo publicación/suscripción.
 
@@ -200,7 +200,7 @@ services:
       - controller-3
 ```
 
-### Servicios Desplegados
+### Servicios desplegados
 
 1. **Controladores (`controller-1`, `controller-2`, `controller-3`)**:
    - **Función**: Los controladores son responsables de la coordinación del clúster de Kafka. Se encargan de la asignación de particiones a los brokers y la elección de líderes para las particiones.
