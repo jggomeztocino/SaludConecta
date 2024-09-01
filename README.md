@@ -24,6 +24,8 @@
 
 - **PostgreSQL / MongoDB**: Dependiendo de las necesidades específicas de cada microservicio, se utiliza PostgreSQL para datos relacionales y MongoDB para datos no relacionales, permitiendo una flexibilidad óptima en la gestión de los datos.
 
+_Actualización_: Aunque en un principio se plantease usar PostgreSQL, la gran diversidad de los datos médicos y personales a almacenar hacen replantear el uso de un esquema relacional (fijo) para este propósito.
+
 - **Prometheus y Grafana**: Utilizados para la monitorización y visualización del rendimiento del sistema, asegurando que todos los microservicios se comportan de manera óptima y facilitando la detección de anomalías o cuellos de botella en tiempo real.
 
 ## Licencia
