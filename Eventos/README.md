@@ -22,7 +22,7 @@ A continuación, se detallan algunos conceptos clave a la hora de trabajar con A
 - Un **broker** es un servidor Kafka que recibe y almacena los registros de los productores y los sirve a los consumidores.
 - Un clúster de Kafka se compone de múltiples brokers que trabajan juntos para manejar la carga y asegurar la disponibilidad.
 
-## 4. **Controladores**
+### 4. **Controladores**
 - El **controlador** es un broker especial en un clúster de Kafka que es responsable de la coordinación y el mantenimiento del estado del clúster.
 - El controlador elige un líder para cada partición y maneja la reasignación de particiones en caso de fallo de un broker.
 
@@ -216,9 +216,9 @@ _Nota_: Un 'cuórum', según la RAE, se define como el "número de individuos ne
      - **Conexión con Clientes Externos**: Los brokers están configurados con listeners adicionales (`PLAINTEXT_HOST`) que exponen los puertos 29092, 39092, y 49092 en el host, permitiendo que clientes externos al contenedor (como productores y consumidores fuera de Docker) se conecten a Kafka.
    - **Organización**: Cada broker también tiene un `KAFKA_NODE_ID` único y se comunica con los controladores para recibir la asignación de particiones y sincronizarse en caso de fallos.
 
-### Opciones Especificadas y sus Implicaciones
+### Detalle de las opciones especificadas
 
-- **`KAFKA_NODE_ID`**: Un identificador único para cada nodo (controlador o broker) en el clúster, necesario para que Kafka mantenga un seguimiento preciso de las responsabilidades de cada nodo.
+- **`KAFKA_NODE_ID`**: Establece un identificador único para cada nodo (controlador o broker) en el clúster, necesario para que Kafka mantenga un seguimiento preciso de las responsabilidades de cada nodo.
   
 - **`KAFKA_PROCESS_ROLES`**: Define si el nodo actúa como controlador, broker o ambos. En esta configuración, se han separado los roles de controlador y broker, con nodos dedicados para cada función.
   
@@ -229,14 +229,6 @@ _Nota_: Un 'cuórum', según la RAE, se define como el "número de individuos ne
 - **`KAFKA_INTER_BROKER_LISTENER_NAME`**: Especifica qué listener se utilizará para la comunicación interna entre brokers, que en este caso es `PLAINTEXT`.
   
 - **`KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS`**: Controla el retraso inicial antes de que los grupos de consumidores comiencen a reequilibrarse. Se ha establecido en 0 para minimizar el tiempo de reequilibrio en un entorno de desarrollo.
-
-### Resumen de la Configuración
-
-Esta configuración de Docker Compose es adecuada para un entorno de desarrollo temprano, donde se requiere levantar un clúster de Kafka funcional para pruebas y experimentación. Sin embargo, en un entorno de producción deberían considerarse las siguientes mejoras:
-
-- **Seguridad**: Se deben configurar protocolos de seguridad adecuados, como SSL/TLS y autenticación SASL. Actualmente, no existe cifrado en las conexiones, por eso se establece `PLAINTEXT`.
-- **Resiliencia**: Aunque los controladores y brokers tienen replicación y failover básicos, se necesitaría una configuración más robusta para garantizar la disponibilidad continua en un entorno de producción, incluyendo monitoreo, alertas y recuperación automática.
-- **Escalabilidad**: La configuración en producción puede necesitar ajustes en la cantidad de particiones, réplicas y la asignación de recursos para manejar cargas de trabajo mucho más grandes.
 
 ### Instrucciones de despliegue y ejemplo de uso
 1. En el directorio donde se encuentra el archivo `compose.yaml`, ejecutar el siguiente comando para levantar el clúster de Kafka:
