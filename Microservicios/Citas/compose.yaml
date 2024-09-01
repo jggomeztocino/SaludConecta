@@ -1,0 +1,50 @@
+networks:
+  saludconecta-citas-network:
+    driver: bridge
+
+volumes:
+  database_data:
+  dlt_data:
+
+services:
+  database:
+    image: mongo:7
+    container_name: database
+    networks:
+      - saludconecta-citas-network
+    ports:
+      - "27017:27017"
+    volumes:
+      - database_data:/data/db
+
+  dlt:
+    image: hyperledger/fabric-peer:2.5
+    container_name: dlt
+    networks:
+      - saludconecta-citas-network
+    ports:
+      - "7051:7051"
+    volumes:
+      - dlt_data:/var/hyperledger/production
+    environment:
+      CORE_PEER_ID: peer0.citas
+      CORE_PEER_ADDRESS: dlt:7051
+      CORE_PEER_GOSSIP_EXTERNALENDPOINT: dlt:7051
+      CORE_PEER_LOCALMSPID: CitasMSP
+
+  citas-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: citas-app
+    depends_on:
+      - database
+      - dlt
+    networks:
+      - saludconecta-citas-network
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://database:27017/citasdb
+      KAFKA_BOOTSTRAP_SERVERS: broker-1:19092,broker-2:19092,broker-3:19092
+      HYPERLEDGER_FABRIC_PEER: dlt:7051
