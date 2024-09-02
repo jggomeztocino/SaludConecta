@@ -6,7 +6,7 @@ skinparam maxMessageSize 250
 actor "Paciente" as Paciente
 
 participant "Servicio de Gestión de Citas" as Citas
-participant "Servicio de Gestión de Médicos" as Personal
+participant "Servicio de Gestión de Personal" as Personal
 participant "Servicio de Recursos" as Recursos
 participant "Servicio de Notificaciones" as Notificaciones
 
