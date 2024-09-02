@@ -1,0 +1,39 @@
+@startuml solicitudCita
+skinparam linetype ortho
+
+skinparam maxMessageSize 250
+
+actor "Paciente" as Paciente
+
+participant "Servicio de Gestión de Citas" as Citas
+participant "Servicio de Gestión de Médicos" as Personal
+participant "Servicio de Recursos" as Recursos
+participant "Servicio de Notificaciones" as Notificaciones
+
+Paciente -> Citas : Solicitud de Cita
+Citas -> Citas : Validación de la información proporcionada y comprobación de la unicidad de la cita
+Citas -> Citas : Generación del evento AppointementRequested
+
+Citas -> Citas : Lectura del evento AppointementRequested
+Citas -> Citas : Pre-asignación de fecha, hora, médico y consulta
+Citas -> Citas : Generación del evento AppointementCreated
+
+Personal <- Citas : Escucha del evento AppointementCreated
+Recursos <- Citas : Escucha del evento AppointementCreated
+
+Personal -> Personal : Verificación de la disponibilidad del médico
+Personal -> Personal : Generación del evento DoctorAssigned
+
+Recursos -> Recursos : Comprobación de la disponibilidad de la consulta en la fecha y hora pre-asignadas
+Recursos -> Recursos : Generación del evento RoomReserved
+
+Citas <- Personal : Escucha del evento DoctorAssigned
+Citas <- Recursos : Escucha del evento RoomReserved
+
+Citas -> Citas : Registro de la cita
+Citas -> Citas : Generación del evento AppointmentConfirmed
+
+Notificaciones <- Citas : Escucha del evento AppointmentConfirmed
+Notificaciones -> Paciente : Notificación sobre la cita confirmada
+
+@enduml
