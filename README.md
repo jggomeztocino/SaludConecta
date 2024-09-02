@@ -20,9 +20,9 @@
 
 - **Kafka & Kafka Streams**: Kafka actúa como el bus de eventos central de SaludConecta, permitiendo la comunicación entre microservicios de manera asíncrona. Kafka Streams se utiliza para el procesamiento en tiempo real de los eventos, permitiendo la transformación y el enrutamiento de los datos sin la necesidad de bases de datos intermediarias.
 
-- **Hyperledger Fabric**: Implementa la **Distributed Ledger Technology (DLT)** para registrar de manera inmutable y segura las transacciones críticas, como la gestión de citas y consentimientos médicos, garantizando la transparencia y la trazabilidad de los datos en todo momento.
+- ~~**Hyperledger Fabric**: Implementa la **Distributed Ledger Technology (DLT)** para registrar de manera inmutable y segura las transacciones críticas, como la gestión de citas y consentimientos médicos, garantizando la transparencia y la trazabilidad de los datos en todo momento.~~
 
-- **PostgreSQL / MongoDB**: Dependiendo de las necesidades específicas de cada microservicio, se utiliza PostgreSQL para datos relacionales y MongoDB para datos no relacionales, permitiendo una flexibilidad óptima en la gestión de los datos.
+- **~~PostgreSQL /~~ MongoDB**: Dependiendo de las necesidades específicas de cada microservicio, se utiliza ~~PostgreSQL para datos relacionales y~~ MongoDB para datos no relacionales, permitiendo una flexibilidad óptima en la gestión de los datos.
 
 _Actualización_: Aunque en un principio se plantease usar PostgreSQL, la gran diversidad de los datos médicos y personales a almacenar hacen replantear el uso de un esquema relacional (fijo) para este propósito.
 
