@@ -4,6 +4,7 @@ skinparam linetype ortho
 skinparam maxMessageSize 250
 
 actor "Paciente" as Paciente
+actor "Médico" as Medico
 
 participant "Servicio de Gestión de Citas" as Citas
 participant "Servicio de Gestión de Personal" as Personal
@@ -30,9 +31,14 @@ Recursos -> Recursos : Generación del evento RoomReserved
 Citas <- Recursos : Escucha del evento RoomReserved
 
 Citas -> Citas : Registro de la cita
-Citas -> Citas : Generación del evento AppointmentConfirmed
+Citas -> Citas : Asignación del estado "Pendiente" a la cita
+Citas -> Citas : Generación del evento AppointmentCreated
+Citas -> Citas : Registro de la consulta asociada a la cita
+Citas -> Citas : Asignación del estado "Programada" a la consulta
+Citas -> Citas : Generación del evento ConsultationCreated
 
-Notificaciones <- Citas : Escucha del evento AppointmentConfirmed
-Notificaciones -> Paciente : Notificación sobre la cita confirmada
+Notificaciones <- Citas : Escucha del evento AppointmentCreated
+Notificaciones -> Paciente : Notificación sobre la cita creada
+Notificaciones -> Medico : Notificación sobre la cita creada
 
 @enduml
