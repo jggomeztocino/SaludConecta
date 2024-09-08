@@ -1,4 +1,4 @@
-package saludconecta.citas.domain.repository;
+package saludconecta.citas.domain.ports;
 
 import saludconecta.citas.domain.entities.Cita;
 
