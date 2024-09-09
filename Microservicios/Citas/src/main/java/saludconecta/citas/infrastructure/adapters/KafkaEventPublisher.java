@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import com.google.gson.Gson;
 
 import saludconecta.citas.domain.entities.Cita;
+import saludconecta.citas.domain.entities.Consulta;
 
 import saludconecta.citas.domain.ports.EventPublisher;
 
@@ -12,6 +13,10 @@ import saludconecta.citas.domain.ports.EventPublisher;
 public class KafkaEventPublisher implements EventPublisher {
     private String convertCitaToEvent(Cita cita) {
         return new Gson().toJson(cita);
+    }
+
+    private String convertConsultaToEvent(Consulta consulta) {
+        return new Gson().toJson(consulta);
     }
 
     @Override
@@ -53,6 +58,34 @@ public class KafkaEventPublisher implements EventPublisher {
     public void CitaUnattended(Cita cita) {
         String event = convertCitaToEvent(cita);
         System.out.println("Publicando evento de desatención de cita: " + event);
+        // Publicar evento en Kafka
+    }
+
+    @Override
+    public void ConsultaCreated(Consulta consulta) {
+        String event = convertConsultaToEvent(consulta);
+        System.out.println("Publicando evento de creación de consulta: " + event);
+        // Publicar evento en Kafka
+    }
+
+    @Override
+    public void ConsultaCancelled(Consulta consulta) {
+        String event = convertConsultaToEvent(consulta);
+        System.out.println("Publicando evento de cancelación de consulta: " + event);
+        // Publicar evento en Kafka
+    }
+
+    @Override
+    public void ConsultaStarted(Consulta consulta) {
+        String event = convertConsultaToEvent(consulta);
+        System.out.println("Publicando evento de inicio de consulta: " + event);
+        // Publicar evento en Kafka
+    }
+
+    @Override
+    public void ConsultaFinished(Consulta consulta) {
+        String event = convertConsultaToEvent(consulta);
+        System.out.println("Publicando evento de finalización de consulta: " + event);
         // Publicar evento en Kafka
     }
 }

@@ -58,25 +58,8 @@ public class Cita {
         return estado;
     }
 
-    public void confirmar() {
-        this.estado = Estado.CONFIRMADA;
-    }
-
-    public void cancelar() {
-        this.estado = Estado.CANCELADA;
-    }
-
-    public void reprogramar(LocalDateTime nuevaFecha) {
-        this.estado = Estado.REPROGRAMADA;
-        this.fecha = nuevaFecha;
-    }
-
-    public void atender() {
-        this.estado = Estado.ATENDIDA;
-    }
-
-    public void desatender() {
-        this.estado = Estado.DESATENDIDA;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public String getObservaciones() {

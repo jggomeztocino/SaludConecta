@@ -7,8 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class CitaRepositoryMongo implements CitaRepository {
-    // Implementation
-
     @Override
     public Optional<Cita> findById(UUID id) {
         // Implementation

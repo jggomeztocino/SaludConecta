@@ -16,7 +16,7 @@ public class CitaService {
         this.eventPublisher = eventPublisher;
     }
 
-    public UUID crearCita(LocalDateTime fecha, String pacienteID, String consultaID, Cita.Estado estado,
+    public UUID createCita(LocalDateTime fecha, String pacienteID, String consultaID, Cita.Estado estado,
             String observaciones) {
         Cita cita = new Cita(UUID.randomUUID(), fecha, pacienteID, consultaID, estado, observaciones);
         repository.save(cita);
@@ -24,41 +24,41 @@ public class CitaService {
         return cita.getID();
     }
 
-    public Cita obtenerCita(UUID id) {
+    public Cita getCita(UUID id) {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Cita no encontrada"));
     }
 
-    public void confirmarCita(UUID id) {
-        Cita cita = obtenerCita(id);
-        cita.confirmar();
+    public void confirmCita(UUID id) {
+        Cita cita = getCita(id);
+        cita.setEstado(Cita.Estado.CONFIRMADA);
         repository.save(cita);
         eventPublisher.CitaConfirmed(cita);
     }
 
-    public void cancelarCita(UUID id) {
-        Cita cita = obtenerCita(id);
-        cita.cancelar();
+    public void cancelCita(UUID id) {
+        Cita cita = getCita(id);
+        cita.setEstado(Cita.Estado.CANCELADA);
         repository.save(cita);
         eventPublisher.CitaCancelled(cita); // Liberar personal y recursos
     }
 
-    public void reprogramarCita(UUID id, LocalDateTime nuevaFecha) {
-        Cita cita = obtenerCita(id);
-        cita.reprogramar(nuevaFecha);
+    public void reschudleCita(UUID id, LocalDateTime nuevaFecha) {
+        Cita cita = getCita(id);
+        cita.setEstado(Cita.Estado.REPROGRAMADA);
         repository.save(cita);
         eventPublisher.CitaRescheduled(cita); // Reprogramar personal y recursos
     }
 
-    public void atenderCita(UUID id) {
-        Cita cita = obtenerCita(id);
-        cita.atender();
+    public void attendCita(UUID id) {
+        Cita cita = getCita(id);
+        cita.setEstado(Cita.Estado.ATENDIDA);
         repository.save(cita);
         eventPublisher.CitaAttended(cita);
     }
 
-    public void desatenderCita(UUID id) {
-        Cita cita = obtenerCita(id);
-        cita.desatender();
+    public void unattendedCita(UUID id) {
+        Cita cita = getCita(id);
+        cita.setEstado(Cita.Estado.DESATENDIDA);
         repository.save(cita);
         eventPublisher.CitaUnattended(cita);
     }
