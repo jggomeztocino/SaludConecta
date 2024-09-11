@@ -1,6 +1,8 @@
 networks:
   saludconecta-citas-network:
     driver: bridge
+  kafka:
+    driver: bridge
 
 volumes:
   database_data:
@@ -25,6 +27,7 @@ services:
       - database
     networks:
       - saludconecta-citas-network
+      - kafka
     ports:
       - "8080:8080"
     environment:
