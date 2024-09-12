@@ -13,7 +13,7 @@ public class CitaMongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "citasdb";
+        return "citas";
     }
 
     @Bean

@@ -38,3 +38,9 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task initializeDatabases(type: Exec) {
+    commandLine 'bash', './initdb.sh'
+}
+
+bootRun.dependsOn(initializeDatabases)

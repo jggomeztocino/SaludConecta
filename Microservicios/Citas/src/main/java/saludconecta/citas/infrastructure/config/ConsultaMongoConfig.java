@@ -13,7 +13,7 @@ public class ConsultaMongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "consultasdb";
+        return "consultas";
     }
 
     @Bean
