@@ -10,7 +10,6 @@ import saludconecta.citas.domain.service.ConsultaService;
 
 @Configuration
 public class BeanConfiguration {
-
     @Bean
     public CitaService citaService(CitaRepository citaRepository, EventPublisher eventPublisher) {
         return new CitaService(citaRepository, eventPublisher);
