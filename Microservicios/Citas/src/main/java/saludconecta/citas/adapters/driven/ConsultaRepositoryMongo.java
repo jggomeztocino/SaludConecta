@@ -1,7 +1,7 @@
-package saludconecta.citas.infrastructure.adapters;
+package saludconecta.citas.adapters.driven;
 
-import saludconecta.citas.domain.entities.Consulta;
-import saludconecta.citas.domain.ports.ConsultaRepository;
+import saludconecta.citas.models.consulta.Consulta;
+import saludconecta.citas.ports.driven.ConsultaRepository;
 
 import java.util.Optional;
 import java.util.UUID;

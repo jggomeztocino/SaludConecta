@@ -1,12 +1,12 @@
-package saludconecta.citas.infrastructure.adapters;
+package saludconecta.citas.adapters.driving;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import com.google.gson.Gson;
 
-import saludconecta.citas.domain.entities.Cita;
-import saludconecta.citas.domain.entities.Consulta;
-import saludconecta.citas.domain.ports.EventListener;
+import saludconecta.citas.models.cita.Cita;
+import saludconecta.citas.models.consulta.Consulta;
+import saludconecta.citas.ports.driving.EventListener;
 
 @Component
 public class KafkaEventListener implements EventListener {

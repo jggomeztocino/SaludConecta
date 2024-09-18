@@ -1,13 +1,13 @@
-package saludconecta.citas.infrastructure.adapters;
+package saludconecta.citas.adapters.driven;
 
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 
-import saludconecta.citas.domain.entities.Cita;
-import saludconecta.citas.domain.entities.Consulta;
+import saludconecta.citas.models.cita.Cita;
+import saludconecta.citas.models.consulta.Consulta;
 
-import saludconecta.citas.domain.ports.EventPublisher;
+import saludconecta.citas.ports.driven.EventPublisher;
 
 @Component
 public class KafkaEventPublisher implements EventPublisher {

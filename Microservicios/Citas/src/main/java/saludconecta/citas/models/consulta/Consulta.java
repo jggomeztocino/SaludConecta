@@ -1,4 +1,4 @@
-package saludconecta.citas.domain.entities;
+package saludconecta.citas.models.consulta;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

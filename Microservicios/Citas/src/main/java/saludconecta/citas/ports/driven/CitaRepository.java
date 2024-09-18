@@ -1,6 +1,6 @@
-package saludconecta.citas.domain.ports;
+package saludconecta.citas.ports.driven;
 
-import saludconecta.citas.domain.entities.Cita;
+import saludconecta.citas.models.cita.Cita;
 
 import java.util.Optional;
 import java.util.UUID;

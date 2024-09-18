@@ -1,12 +1,12 @@
-package saludconecta.citas.infrastructure.config;
+package saludconecta.citas.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import saludconecta.citas.domain.ports.CitaRepository;
-import saludconecta.citas.domain.ports.EventPublisher;
-import saludconecta.citas.domain.ports.ConsultaRepository;
-import saludconecta.citas.domain.service.CitaService;
-import saludconecta.citas.domain.service.ConsultaService;
+import saludconecta.citas.ports.driven.CitaRepository;
+import saludconecta.citas.ports.driven.EventPublisher;
+import saludconecta.citas.ports.driven.ConsultaRepository;
+import saludconecta.citas.services.CitaService;
+import saludconecta.citas.services.ConsultaService;
 
 @Configuration
 public class BeanConfiguration {

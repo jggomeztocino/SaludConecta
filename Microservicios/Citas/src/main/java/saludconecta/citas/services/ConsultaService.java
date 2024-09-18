@@ -1,8 +1,8 @@
-package saludconecta.citas.domain.service;
+package saludconecta.citas.services;
 
-import saludconecta.citas.domain.entities.Consulta;
-import saludconecta.citas.domain.ports.ConsultaRepository;
-import saludconecta.citas.domain.ports.EventPublisher;
+import saludconecta.citas.models.consulta.Consulta;
+import saludconecta.citas.ports.driven.ConsultaRepository;
+import saludconecta.citas.ports.driven.EventPublisher;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

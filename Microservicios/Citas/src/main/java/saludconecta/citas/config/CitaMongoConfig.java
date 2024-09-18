@@ -1,4 +1,4 @@
-package saludconecta.citas.infrastructure.config;
+package saludconecta.citas.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -9,11 +9,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @Configuration
 @EnableMongoRepositories(basePackages = "saludconecta.citas.infrastructure.adapters")
-public class ConsultaMongoConfig extends AbstractMongoClientConfiguration {
+public class CitaMongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "consultas";
+        return "citas";
     }
 
     @Bean

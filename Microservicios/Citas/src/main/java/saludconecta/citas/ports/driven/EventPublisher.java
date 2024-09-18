@@ -1,7 +1,7 @@
-package saludconecta.citas.domain.ports;
+package saludconecta.citas.ports.driven;
 
-import saludconecta.citas.domain.entities.Cita;
-import saludconecta.citas.domain.entities.Consulta;
+import saludconecta.citas.models.cita.Cita;
+import saludconecta.citas.models.consulta.Consulta;
 
 public interface EventPublisher {
     void CitaCreated(Cita cita);
