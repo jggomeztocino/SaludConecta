@@ -1,18 +1,10 @@
-package saludconecta.citas.models.cita;
+package saludconecta.citas.dto.cita;
 
+import saludconecta.citas.models.cita.Cita.Estado;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Cita {
-    public enum Estado {
-        PENDIENTE,
-        CONFIRMADA,
-        CANCELADA,
-        REPROGRAMADA,
-        ATENDIDA,
-        DESATENDIDA
-    }
-
+public class CitaDTO {
     private UUID id;
     private LocalDateTime fecha;
     private String paciente;
@@ -20,16 +12,6 @@ public class Cita {
     private Estado estado;
     private String observaciones;
 
-    public Cita(UUID id, LocalDateTime fecha, String paciente, String consulta, Estado estado, String observaciones) {
-        this.id = id;
-        this.fecha = fecha;
-        this.paciente = paciente;
-        this.consulta = consulta;
-        this.estado = estado;
-        this.observaciones = observaciones;
-    }
-
-    // Getters y Setters
     public UUID getId() {
         return id;
     }

@@ -9,7 +9,7 @@ import saludconecta.pacientes.models.paciente.Paciente;
 public interface PacienteMapper {
     PacienteMapper INSTANCE = Mappers.getMapper(PacienteMapper.class);
 
-    PacienteDTO pacienteToPacienteDTO(Paciente paciente);
+    PacienteDTO toDTO(Paciente paciente);
 
-    Paciente pacienteDTOToPaciente(PacienteDTO pacienteDTO);
+    Paciente toEntity(PacienteDTO pacienteDTO);
 }

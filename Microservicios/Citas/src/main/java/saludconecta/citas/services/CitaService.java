@@ -1,65 +1,59 @@
 package saludconecta.citas.services;
 
+import org.springframework.stereotype.Service;
+import saludconecta.citas.dto.cita.CitaDTO;
+import saludconecta.citas.mappers.CitaMapper;
 import saludconecta.citas.models.cita.Cita;
 import saludconecta.citas.ports.driven.CitaRepository;
-import saludconecta.citas.ports.driven.EventPublisher;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
-import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
+@Service
 public class CitaService {
-    private final CitaRepository repository;
-    private final EventPublisher eventPublisher;
 
-    public CitaService(CitaRepository repository, EventPublisher eventPublisher) {
-        this.repository = repository;
-        this.eventPublisher = eventPublisher;
+    private final CitaRepository citaRepository;
+    private final CitaMapper citaMapper = CitaMapper.INSTANCE;
+
+    public CitaService(CitaRepository citaRepository) {
+        this.citaRepository = citaRepository;
     }
 
-    public UUID createCita(LocalDateTime fecha, String pacienteID, String consultaID, Cita.Estado estado,
-            String observaciones) {
-        Cita cita = new Cita(UUID.randomUUID(), fecha, pacienteID, consultaID, estado, observaciones);
-        repository.save(cita);
-        eventPublisher.CitaCreated(cita);
-        return cita.getID();
+    public List<CitaDTO> getAllCitas() {
+        return citaRepository.findAll().stream()
+                .map(citaMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Cita getCita(UUID id) {
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Cita no encontrada"));
+    public Optional<CitaDTO> getCitaById(UUID id) {
+        return citaRepository.findById(id)
+                .map(citaMapper::toDTO);
     }
 
-    public void confirmCita(UUID id) {
-        Cita cita = getCita(id);
-        cita.setEstado(Cita.Estado.CONFIRMADA);
-        repository.save(cita);
-        eventPublisher.CitaConfirmed(cita);
+    public CitaDTO createCita(CitaDTO citaDTO) {
+        Cita cita = citaMapper.toEntity(citaDTO);
+        citaRepository.save(cita);
+        return citaMapper.toDTO(cita);
     }
 
-    public void cancelCita(UUID id) {
-        Cita cita = getCita(id);
-        cita.setEstado(Cita.Estado.CANCELADA);
-        repository.save(cita);
-        eventPublisher.CitaCancelled(cita); // Liberar personal y recursos
+    public void updateCita(UUID id, CitaDTO citaDTO) {
+        Optional<Cita> existingCita = citaRepository.findById(id);
+        if (existingCita.isPresent()) {
+            Cita cita = existingCita.get();
+            cita.setFecha(citaDTO.getFecha());
+            cita.setPaciente(citaDTO.getPaciente());
+            cita.setConsulta(citaDTO.getConsulta());
+            cita.setEstado(citaDTO.getEstado());
+            cita.setObservaciones(citaDTO.getObservaciones());
+            citaRepository.save(cita);
+        } else {
+            throw new RuntimeException("Cita no encontrada");
+        }
     }
 
-    public void reschudleCita(UUID id, LocalDateTime nuevaFecha) {
-        Cita cita = getCita(id);
-        cita.setEstado(Cita.Estado.REPROGRAMADA);
-        repository.save(cita);
-        eventPublisher.CitaRescheduled(cita); // Reprogramar personal y recursos
-    }
-
-    public void attendCita(UUID id) {
-        Cita cita = getCita(id);
-        cita.setEstado(Cita.Estado.ATENDIDA);
-        repository.save(cita);
-        eventPublisher.CitaAttended(cita);
-    }
-
-    public void unattendedCita(UUID id) {
-        Cita cita = getCita(id);
-        cita.setEstado(Cita.Estado.DESATENDIDA);
-        repository.save(cita);
-        eventPublisher.CitaUnattended(cita);
+    public void deleteCita(UUID id) {
+        citaRepository.delete(id);
     }
 }

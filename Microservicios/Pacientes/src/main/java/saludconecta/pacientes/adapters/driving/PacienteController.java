@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/pacientes")
+@RequestMapping("/pacientes")
 public class PacienteController {
     private final PacienteService pacienteService;
 

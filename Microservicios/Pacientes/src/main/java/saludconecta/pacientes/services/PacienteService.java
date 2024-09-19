@@ -22,19 +22,19 @@ public class PacienteService {
 
     public List<PacienteDTO> getAllPacientes() {
         return pacienteRepository.findAll().stream()
-                .map(pacienteMapper::pacienteToPacienteDTO)
+                .map(pacienteMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
     public Optional<PacienteDTO> getPacienteById(UUID id) {
         return pacienteRepository.findById(id)
-                .map(pacienteMapper::pacienteToPacienteDTO);
+                .map(pacienteMapper::toDTO);
     }
 
     public PacienteDTO createPaciente(PacienteDTO pacienteDTO) {
-        Paciente paciente = pacienteMapper.pacienteDTOToPaciente(pacienteDTO);
+        Paciente paciente = pacienteMapper.toEntity(pacienteDTO);
         pacienteRepository.save(paciente);
-        return pacienteMapper.pacienteToPacienteDTO(paciente);
+        return pacienteMapper.toDTO(paciente);
     }
 
     public void updatePaciente(UUID id, PacienteDTO pacienteDTO) {
