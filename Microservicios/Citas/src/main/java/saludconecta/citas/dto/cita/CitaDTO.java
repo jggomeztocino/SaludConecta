@@ -1,14 +1,14 @@
 package saludconecta.citas.dto.cita;
 
-import saludconecta.citas.models.cita.Cita.Estado;
+import saludconecta.citas.models.cita.CitaStates.Estado;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class CitaDTO {
     private UUID id;
+    private UUID paciente;
+    private UUID consulta;
     private LocalDateTime fecha;
-    private String paciente;
-    private String consulta;
     private Estado estado;
     private String observaciones;
 
@@ -28,19 +28,19 @@ public class CitaDTO {
         this.fecha = fecha;
     }
 
-    public String getPaciente() {
+    public UUID getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(String paciente) {
+    public void setPaciente(UUID paciente) {
         this.paciente = paciente;
     }
 
-    public String getConsulta() {
+    public UUID getConsulta() {
         return consulta;
     }
 
-    public void setConsulta(String consulta) {
+    public void setConsulta(UUID consulta) {
         this.consulta = consulta;
     }
 

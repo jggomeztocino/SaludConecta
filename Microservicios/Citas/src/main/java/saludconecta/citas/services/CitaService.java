@@ -1,11 +1,11 @@
 package saludconecta.citas.services;
 
-import org.springframework.stereotype.Service;
 import saludconecta.citas.dto.cita.CitaDTO;
 import saludconecta.citas.mappers.CitaMapper;
 import saludconecta.citas.models.cita.Cita;
 import saludconecta.citas.ports.driven.CitaRepository;
 
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -43,7 +43,6 @@ public class CitaService {
         if (existingCita.isPresent()) {
             Cita cita = existingCita.get();
             cita.setFecha(citaDTO.getFecha());
-            cita.setPaciente(citaDTO.getPaciente());
             cita.setConsulta(citaDTO.getConsulta());
             cita.setEstado(citaDTO.getEstado());
             cita.setObservaciones(citaDTO.getObservaciones());
